@@ -1,0 +1,13 @@
+{ "name" : "asciiimage"
+, "version" : "0.1.0alpha"
+, "description" : "Simple library to convert images to ASCII-art. Adopted from MooAsciiArt (http://mootools.net/plugins/p/mooasciiart) written by Abbey Sparrow"
+, "keywords" : "asciiart, acsii, image, converter"
+, "homepage" : "http://github.com/usefulthink/node-asciiimage"
+, "author" : { "name" : "Martin Schuhfuss", "email" : "m.schuhfuss@googlemail.com", "url" : "http://usefulthink.com" }
+, "main" : "asciiimage"
+, "modules" : { "asciiimage" : "./lib/asciiimage.js" }
+, "repository" : { "type" : "git", "url" : "http://github.com/usefulthink/node-asciiimage.git" }
+, "dependencies" : { "canvas" : "*" }
+, "engines" : { "node" : ">=0.4.0" }
+, "bin" : { "asciiimage" : "bin/asciiimage.js" }
+}
