@@ -4,7 +4,7 @@
 , "keywords" : "asciiart, acsii, image, converter"
 , "homepage" : "http://github.com/usefulthink/node-asciiimage"
 , "author" : { "name" : "Martin Schuhfuss", "email" : "m.schuhfuss@googlemail.com", "url" : "http://usefulthink.com" }
-, "main" : "asciiimage"
+, "main" : "lib/asciiimage"
 , "modules" : { "asciiimage" : "./lib/asciiimage.js" }
 , "repository" : { "type" : "git", "url" : "http://github.com/usefulthink/node-asciiimage.git" }
 , "dependencies" : { "canvas" : "*", "optparse" : "*" }
