@@ -16,14 +16,14 @@ files.forEach(function(file,idx) {
 util.log(files.length + ' frames cached');
 util.log('starting http- and socket.io-server on port 23042');
 
+// http-server
 var server = http.createServer(function(req, res){ 
- // your normal server code 
  res.writeHead(200, {'Content-Type': 'text/html'}); 
  res.end(fs.readFileSync(__dirname + '/test.html').toString('utf8')); 
 });
 server.listen(23042);
 
-// socket.io 
+// socket.io-server
 var socket = io.listen(server); 
 var numClients = 0;
 
@@ -40,12 +40,11 @@ socket.on('connection', function(client){
   
   client.on('disconnect', function() {
     util.log('client ' + clientId + ' disconnected: ' + client);
+    clearInterval(timer);
   });
 
   function sendNextFrame() {
-//    util.puts("sending frame " + frameIndex);
-    client.send(frames[(frameIndex++)]);
-
+    client.send(frames[frameIndex++]);
     frameIndex = frameIndex % frames.length;
   }
   
