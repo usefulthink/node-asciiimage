@@ -3,22 +3,21 @@
 <html>
 <body>
 	<h1>This is ASCII-Video-Streaming</h1>
-	<pre id="video" style="width: 431px; height: 318px; background: #CCC; border: 1px solid #333; font-size:10px;"></pre>
+	<pre id="video" style="display: inline-block; width: auto; height: auto; background: #CCC; border: 1px solid #333; font-size:10px;"></pre>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-<script src="http://localhost:23042/socket.io/socket.io.js"></script> 
 <script>
- var socket = new io.Socket('localhost', {port:'23042'}); 
- socket.connect();
+	var socketIoUrl = '//' + document.location.hostname + ':23042/socket.io/socket.io.js'; 
+	var console = window.console || { log: function() {} };
 
- 
- socket.on('connect', function(){ console.log('connected'); socket.send('yay!'); });
- var target = $('pre')[0];
+	$.getScript(socketIoUrl, function() {
+		var socket = new io.Socket(document.location.hostname, {port:'23042'}); 
+		var target = $('pre')[0];
 
-console.log(target);
- socket.on('message', function(msg){
-	target.innerHTML=msg;
-});
- socket.on('disconnect', function(){ console.log('disconnect!'); });
-</script> 
+		socket.connect();
+		socket.on('connect', function(){ console.log('connected'); socket.send('yay!'); });
+		socket.on('message', function(msg){ target.innerHTML=msg; });
+		socket.on('disconnect', function(){ console.log('disconnect!'); });
+	});
+</script>
 </body>

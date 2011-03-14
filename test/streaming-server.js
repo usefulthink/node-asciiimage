@@ -3,7 +3,7 @@ var util=require('util'),
     http = require('http'),  
     io = require('socket.io');
 
-var dir=__dirname+'/video';
+var dir=__dirname+'/video2';
 var files=fs.readdirSync(dir);
 var frames=[];
 
@@ -49,7 +49,7 @@ socket.on('connection', function(client){
   }
   
   util.log('start streaming for client ' + clientId);
-  timer=setInterval(sendNextFrame, 50);
+  timer=setInterval(sendNextFrame, 40);
 });
 
 // vim: ts=2 sw=2 expandtab
